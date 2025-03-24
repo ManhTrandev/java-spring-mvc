@@ -21,7 +21,7 @@ public class UserController {
 
     public String getHomePage(){
         String test =this.userService.handleHello();
-        return "Viewshop.html";
+        return "hello";
     }
 }
 
