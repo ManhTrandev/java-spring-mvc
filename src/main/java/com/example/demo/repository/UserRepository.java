@@ -11,4 +11,5 @@ import com.example.demo.domain.User;
 public interface UserRepository extends JpaRepository<User,Long> {
 User save (User newInfor);
 List<User> findByEmail(String email);
+List<User> findAll();
 }

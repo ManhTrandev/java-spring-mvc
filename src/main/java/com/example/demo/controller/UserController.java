@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.example.demo.domain.User;
-import com.example.demo.repository.UserRepository;
 import com.example.demo.service.UserService;
 
 
@@ -26,14 +25,16 @@ public class UserController {
     @RequestMapping("/")
 
     public String getHomePage(Model model){
-        List<User> arrUsers =this.userService.getAllUserByEmail("hello231@gmail.com");
-        System.out.println(arrUsers);
+     List<User> arrUsers =this.userService.getAllUserByEmail("hello231@gmail.com");
+     System.out.println(arrUsers);
         model.addAttribute("Manh", "test");
         return "hello";
     }
     @RequestMapping("/admin/user")
     public String getListUserPage(Model model){
         model.addAttribute("newUser", new User());
+        List<User> users = this.userService.getAllUser();
+        model.addAttribute("user1", users);
         return "admin/user/table-user";
     }
     @RequestMapping("/admin/user/create")
@@ -44,9 +45,9 @@ public class UserController {
 
     @RequestMapping(value = "/admin/user", method = RequestMethod.POST)
     public String createUserPage(Model mode,@ModelAttribute("newUser") User newInfor){
-        System.out.println(">>> Run"+newInfor);
+        // System.out.println(">>> Run"+newInfor);
         this.userService.handleSaveUser(newInfor);
-        return "admin/user/table-user";
+        return "redirect:/admin/user";
     }
 }
 

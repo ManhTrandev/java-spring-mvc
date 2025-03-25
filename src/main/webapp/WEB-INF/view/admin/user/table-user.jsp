@@ -39,28 +39,26 @@ rel="stylesheet">
     </tr>
 </thread>
 <tbody>
-    <tr>
-        <th>1</th>
-        <th>Mack</th>
-        <th>Eot</th>
-<td>
-    <button class="btn btn-success">View</button>
-    <button class="btn btn-warning mx-2">Update</button>
-    <button class="btn btn-danger">Delete</button>
-
-</td>
-    </tr>
-    <tr>
-        <th>2</th>
-        <th>Kack</th>
-        <th>LeoEot</th>
-        <td>
-            <button class="btn btn-success">View</button>
-            <button class="btn btn-warning mx-2">Update</button>
-            <button class="btn btn-danger">Delete</button>
-        
-        </td>
-    </tr>
+    <c:forEach var="user" items="${user1}">
+<!-- <tr>
+<td>${weather[0]}</td>
+<td>${weather[1]}</td>
+<td style="text-align: center">${weather[2]}℃</td>
+<td style="text-align: center">${weather[3]}℃</td>
+</tr> -->
+<tr>
+    <th>${user.id}</th>
+    <th>${user.email}</th>
+    <th>${user.fullName}</th>
+    <td>
+        <button class="btn btn-success">View</button>
+        <button class="btn btn-warning mx-2">Update</button>
+        <button class="btn btn-danger">Delete</button>
+    
+    </td>
+</tr>
+</c:forEach>
+    
 </tbody>
 </table>
     </div>
