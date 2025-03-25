@@ -38,11 +38,11 @@ public class UserController {
         model.addAttribute("user1", users);
         return "admin/user/table-user";
     }
-    @RequestMapping("/admin/user/{auto}")
-    public String getUserDetailPage(Model model,@PathVariable long auto){
-        System.out.println(">>>CHeck path:" +auto);
-        // model.addAttribute("newUser", new User());
-        model.addAttribute("id", auto);
+    @RequestMapping("/admin/user/{id}")
+    public String getUserDetailPage(Model model,@PathVariable long id){
+User user = this.userService.getUserById(id);
+    model.addAttribute("user", user);
+        model.addAttribute("id", id);
         return "admin/user/show";
     }
 
