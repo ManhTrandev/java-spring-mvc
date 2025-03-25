@@ -24,7 +24,7 @@ rel="stylesheet">
     <div class="col-md-6 col-12 mx-auto">
         <h3>Create new user</h3>
         <hr/>
-        <form:form method="post" action="/admin/user/create"
+        <form:form method="post" action="/admin/user"
         modelAttribute="newUser"
         >
             <div class="mb-3">
