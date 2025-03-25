@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.example.demo.domain.User;
+import com.example.demo.repository.UserRepository;
 import com.example.demo.service.UserService;
 
 
@@ -14,16 +15,18 @@ import com.example.demo.service.UserService;
 public class UserController {
 
     // DI
-    private UserService userService;
+    private final UserService userService;
+
     public UserController(UserService userService) {
         this.userService = userService;
+      
     }
 
     @RequestMapping("/")
 
     public String getHomePage(Model model){
-        String test =this.userService.handleHello();
-        model.addAttribute("Manh", test);
+       
+        model.addAttribute("Manh", "test");
         return "hello";
     }
     @RequestMapping("/admin/user")
@@ -35,6 +38,7 @@ public class UserController {
     @RequestMapping(value = "/admin/user/create", method = RequestMethod.POST)
     public String createUserPage(Model mode,@ModelAttribute("newUser") User newInfor){
         System.out.println(">>> Run"+newInfor);
+        this.userService.handleSaveUser(newInfor);
         return "hello";
     }
 }
